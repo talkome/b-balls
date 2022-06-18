@@ -9,6 +9,7 @@ void League::generate_team() {
                                       "F","G","H","I","J",
                                       "K","L","M","N","O",
                                       "P","Q","R","S","T"};
+
     for (unsigned long i = 0; i < NUM_OF_TEAMS; ++i) {
         this->teams.push_back(new Team(teams_name_list[i]));
     }
