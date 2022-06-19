@@ -59,7 +59,7 @@ void Schedule::sequence_of_losses() {
 
 void Schedule::leagues_top_teams() {
     sort(this->league.teams.begin(), this->league.teams.end(),
-              [](Team* a, Team* b){ return a->wins_counter > b->wins_counter; });
+              [](Team* a, Team* b){ return a->score > b->score; });
     for_each(this->league.teams.begin(), this->league.teams.end(),
              [](const Team* a){ cout << *a << endl; });
 }

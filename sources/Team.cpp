@@ -15,10 +15,3 @@ ostream &operator<<(ostream& out, const Team &team) {
     << "}";
     return out;
 }
-
-double Team::set_skill() {
-    std::mt19937 gen (SD);
-    std::uniform_real_distribution<double> dis(0.0, 1.0);
-    return dis(gen);
-
-}

@@ -21,7 +21,7 @@ public:
     int losses_counter;
 
     // constructors
-    Team(string name): name(std::move(name)), score(0), skills(set_skill()), wins_counter(0), losses_counter(0){};
+    Team(string name, double skill): name(std::move(name)), score(0), skills(skill), wins_counter(0), losses_counter(0){};
 
     Team(Team& other){
         this->name = other.name;
@@ -35,9 +35,6 @@ public:
 
     // destructors
     ~Team()= default;
-
-    //methods
-    static double set_skill();
 
     // operators
     friend ostream& operator<<(ostream& out, const Team& team);

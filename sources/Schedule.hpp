@@ -13,7 +13,7 @@ public:
     League league;
 
     // Constructor
-    Schedule(const League& league) : league(league) {}
+    Schedule(League& league) : league(league) {}
 
     Schedule(Schedule& other){
         this->league = other.league;

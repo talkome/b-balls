@@ -18,7 +18,9 @@ public:
     // constructor
     League(const vector<Team*>& teams): teams(teams){};
 
-    League(const League& other);
+    League(const League& other){
+        this->teams = other.teams;
+    }
 
     League(League&& other) noexcept;
 
