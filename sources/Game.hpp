@@ -27,6 +27,13 @@ public:
         play(t1,t2);
     };
 
+    Game(Game& other){
+        this->home_team = other.home_team;
+        this->outside_team = other.outside_team;
+    }
+
+    Game(Game&& other) noexcept;
+
     // Destructor
     ~Game()=default;
 
@@ -35,4 +42,6 @@ public:
 
     // operators
     friend ostream& operator<<(ostream&, const Game&);
+    Game& operator=(const Game& other);
+    Game& operator=(Game&& other) noexcept;
 };

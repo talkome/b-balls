@@ -34,22 +34,27 @@ void Schedule::results_table() {
 }
 
 void Schedule::sequence_of_victories() {
-    auto max = max_element(this->league.teams.begin(),
-                               this->league.teams.end(),
-                               [](const Team* a,const Team* b) {
-                                   return a->wins_counter < b->wins_counter; });
+    vector<pair<string,int>> name_score;
+    for (auto &team: this->league.teams){
+        name_score.emplace_back(team->name, team->losses_counter);
+    }
 
-    cout<< "longest sequence of victories is: " << *max << endl;
+    auto max = max_element(name_score.begin(),name_score.end(),
+                           [] (const auto & p1, const auto & p2) { return p1.second < p2.second; });
+
+    cout<< "longest sequence of losses is: " << max->first << " with score: "<< max->second << endl;
 }
 
 void Schedule::sequence_of_losses() {
-    auto min = max_element(this->league.teams.begin(),
-                               this->league.teams.end(),
-                               [](const Team* a,const Team* b) {
-                                   return a->losses_counter < b->losses_counter; });
+    vector<pair<string,int>> name_score;
+    for (auto &team: this->league.teams){
+        name_score.emplace_back(team->name, team->wins_counter);
+    }
 
-    cout<< "longest sequence of losses is: " << *min << endl;
+    auto min = max_element(name_score.begin(),name_score.end(),
+                           [] (const auto & p1, const auto & p2) { return p1.second < p2.second; });
 
+    cout<< "longest sequence of losses is: " << min->first << " with score: "<< min->second << endl;
 }
 
 void Schedule::leagues_top_teams() {

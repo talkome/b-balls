@@ -13,7 +13,13 @@ public:
     League league;
 
     // Constructor
-    explicit Schedule(const League& league) : league(league) {}
+    Schedule(const League& league) : league(league) {}
+
+    Schedule(Schedule& other){
+        this->league = other.league;
+    }
+
+    Schedule(Schedule&& other) noexcept;
 
     // Destructor
     ~Schedule()=default;
@@ -26,4 +32,9 @@ public:
     void leagues_top_teams();
     void results_table();
     void high_score();
+
+    // operators
+    Schedule& operator=(const Schedule& other);
+    Schedule& operator=(Schedule&& other) noexcept;
+
 };

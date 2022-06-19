@@ -16,7 +16,11 @@ public:
     vector<Team*> teams;
 
     // constructor
-    explicit League(const vector<Team*>& teams): teams(teams){};
+    League(const vector<Team*>& teams): teams(teams){};
+
+    League(const League& other);
+
+    League(League&& other) noexcept;
 
     League(){
         generate_team();
@@ -27,4 +31,8 @@ public:
 
     // methods
     void generate_team();
+
+    // operators
+    League& operator=(const League& other);
+    League& operator=(League&& other) noexcept;
 };
