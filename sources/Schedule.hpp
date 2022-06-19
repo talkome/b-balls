@@ -31,6 +31,7 @@ public:
     void sequence_of_losses();
     void leagues_top_teams();
     void results_table();
+    void loses_vs_wins();
     void high_score();
 
     // operators

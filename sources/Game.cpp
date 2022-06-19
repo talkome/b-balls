@@ -9,10 +9,10 @@ using namespace std;
 void Game::play(Team *home, Team *outside) {
     int home_score = (int)(home_prob(gen) + TEN*home->skills);
     int outside_score = (int)(outside_prob(gen) + TEN*outside->skills);
-    home->score += home_score;
-    home->score -= outside_score;
-    outside->score += outside_score;
-    outside->score -= home_score;
+    home->hitting(home_score);
+    outside->absorb(home_score);
+    outside->hitting(outside_score);
+    home->absorb(outside_score);
     if (home->score > outside->score){
         home->wins_counter++;
         outside->losses_counter++;
@@ -33,5 +33,3 @@ ostream &operator<<(ostream& out, const Game& game) {
     << "}}";
     return out;
 }
-
-

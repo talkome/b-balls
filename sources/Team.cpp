@@ -15,3 +15,17 @@ ostream &operator<<(ostream& out, const Team &team) {
     << "}";
     return out;
 }
+
+void Team::hitting(int x) {
+    this->score += x;
+    this->good_points += x;
+}
+
+void Team::absorb(int x) {
+    if (score <= 0){
+        score = 0;
+    } else {
+        this->score -= x;
+        this->bad_points += x;
+    }
+}

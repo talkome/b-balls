@@ -31,6 +31,8 @@ void Schedule::results_table() {
     leagues_top_teams();
     cout << "high score: " << endl;
     high_score();
+    cout << "lose vs wins: " << endl;
+    loses_vs_wins();
 }
 
 void Schedule::sequence_of_victories() {
@@ -64,9 +66,16 @@ void Schedule::leagues_top_teams() {
              [](const Team* a){ cout << *a << endl; });
 }
 
-void Schedule::high_score() {
+void Schedule::loses_vs_wins() {
     sort(this->league.teams.begin(), this->league.teams.end(),
          [](Team* a, Team* b){ return (a->wins_counter - a->losses_counter) > (b->wins_counter - b->losses_counter); });
+    for_each(this->league.teams.begin(), this->league.teams.end(),
+             [](const Team* a){ cout << *a << endl; });
+}
+
+void Schedule::high_score() {
+    sort(this->league.teams.begin(), this->league.teams.end(),
+         [](Team* a, Team* b){ return (a->good_points - a->bad_points) > (b->good_points - b->bad_points); });
     for_each(this->league.teams.begin(), this->league.teams.end(),
              [](const Team* a){ cout << *a << endl; });
 }
