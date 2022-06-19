@@ -21,7 +21,11 @@ public:
     int losses_counter;
 
     // constructors
-    Team(string name, double skill): name(std::move(name)), score(0), skills(skill), wins_counter(0), losses_counter(0){};
+    Team(string name, double skill): name(std::move(name)), score(0), skills(skill), wins_counter(0), losses_counter(0){
+        if (skill > 1 || skills < 0){
+            throw invalid_argument("skills invalid");
+        }
+    };
 
     Team(Team& other){
         this->name = other.name;

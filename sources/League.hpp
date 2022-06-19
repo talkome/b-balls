@@ -16,7 +16,11 @@ public:
     vector<Team*> teams;
 
     // constructor
-    League(const vector<Team*>& teams): teams(teams){};
+    League(const vector<Team*>& teams): teams(teams){
+        if (teams.empty()){
+            throw invalid_argument("team invalid");
+        }
+    };
 
     League(const League& other){
         this->teams = other.teams;
